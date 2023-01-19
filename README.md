@@ -12,6 +12,7 @@
 
 
 
+'''
 
     def word_generator(length):
         x = ''.join(random.sample(string.ascii_letters+string.digits,k=length))
@@ -34,6 +35,7 @@
 
 
 
+'''
 
     def fitness(password, test_word):
         score = 0
