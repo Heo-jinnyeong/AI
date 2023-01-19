@@ -11,7 +11,7 @@
 - 진화 과정에서 환경에 적합한 종이 생존하기 때문에 여러 염색체를 생성해야 한다.
 
 
-'''
+
 
     def word_generator(length):
         x = ''.join(random.sample(string.ascii_letters+string.digits,k=length))
@@ -23,7 +23,7 @@
             length = i % (max_l - min_l + 1) + min_l
             population.append(word_generator(length))
         return population
-'''
+
 
 - 비밀번호는 문자와 숫자로 구성되어 있다고 가정하고 문자와 숫자를 무작위로 선택하여 염색체를 생성하였다.
 - 비밀번호의 길이는 알 수 없지만, 너무 긴 비밀번호는 상당한 계산이 발생할 수 있기 때문에 최소 길이와 최대 길이를 설정하였다.
@@ -33,7 +33,7 @@
 - 진화 과정에서 살아남을 가치가 있는 염색체를 남기는 과정이다.
 
 
-'''
+
 
     def fitness(password, test_word):
         score = 0
@@ -47,7 +47,7 @@
             if password[i] == test_word[i]:
                 score += 1
         return score / (len(password) + len_score) * 100
-'''
+
 
 
 
