@@ -11,7 +11,8 @@
 - 진화 과정에서 환경에 적합한 종이 생존하기 때문에 여러 염색체를 생성해야 한다.
 
 
-''' python
+'''
+
     def word_generator(length):
         x = ''.join(random.sample(string.ascii_letters+string.digits,k=length))
         return x
@@ -33,6 +34,7 @@
 
 
 '''
+
     def fitness(password, test_word):
         score = 0
         if len(password) != len(test_word):
