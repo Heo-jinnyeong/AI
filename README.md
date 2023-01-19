@@ -10,6 +10,7 @@
 1. Population(Chromosome) 만들기
 - 진화 과정에서 환경에 적합한 종이 생존하기 때문에 여러 염색체를 생성해야 한다.
 
+
 '''
 def word_generator(length):
     x = ''.join(random.sample(string.ascii_letters+string.digits,k=length))
@@ -29,6 +30,7 @@ def population_generator(size, min_l, max_l):
 
 2. 적합도 평가
 - 진화 과정에서 살아남을 가치가 있는 염색체를 남기는 과정이다.
+
 
 '''
 def fitness(password, test_word):
