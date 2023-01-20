@@ -1,16 +1,16 @@
 # KAU-AI
 ## 2022-1학기 AI입문 수업
 
-### 유전 알고리즘(Genetic Algorithm)을 이용한 비밀번호 찾기
+## 유전 알고리즘(Genetic Algorithm)을 이용한 비밀번호 찾기
 
-### 유전 알고리즘
+## 유전 알고리즘
 - 유전 알고리즘은 자연세계의 진화과정을에 기초한 계산 모델로 최적화 문제를 해결하는 기법 중 하나이다. <sup>[[1]](#footnote_1)</sup>
 - 적합도 평가, 돌연변이, 교배 연산 등으로 문제를 해결한다. 
 
-1. Population(Chromosome) 만들기
+
+### 1. Population(Chromosome) 만들기
+
 - 진화 과정에서 환경에 적합한 종이 생존하기 때문에 여러 염색체를 생성해야 한다.
-
-
 
 '''
 
@@ -30,10 +30,8 @@
 - 비밀번호의 길이는 알 수 없지만, 너무 긴 비밀번호는 상당한 계산이 발생할 수 있기 때문에 최소 길이와 최대 길이를 설정하였다.
 
 
-2. 적합도 평가
+### 2. 적합도 평가
 - 진화 과정에서 살아남을 가치가 있는 염색체를 남기는 과정이다.
-
-
 
 '''
 
@@ -49,8 +47,57 @@
             if password[i] == test_word[i]:
                 score += 1
         return score / (len(password) + len_score) * 100
+        
+    def compute_perform(population,password):
+        perform_list = []
+        for i in population:
+            score = fitness(password, i)
+
+            if score > 0:
+                pred_len = len(i)
+
+            perform_list.append([i,score])
+
+        population_sorted = sorted(perform_list, key=lambda x:x[1],reverse=True)
+        return population_sorted, pred_len
+        
+        
+    def select_survivors(population_sorted, best_sample, lucky_few, password_len):
+        next_generation = []
+
+        for i in range(best_sample):
+            if population_sorted[i][1] > 0:
+                next_generation.append(population_sorted[i][0])
+
+        lucky_survivors = random.sample(population_sorted, k=lucky_few)
+        for j in lucky_survivors:
+            next_generation.append(j[0])
+
+        while len(next_generation) < best_sample + lucky_few:
+            next_generation.append(word_generator(length=password_len))
+
+        random.shuffle(next_generation)
+        return next_generation        
 
 
+'''
+
+1. 비밀번호와 Chromosome의 길이가 다르면, 비밀번호를 맞출 수 없기 때문에 적합도는 0점이며, 
+길이가 일치하더라도 이는 필수조건이기 때문에 이에 대한 점수는 0.5로 설정하였다.
+2. 비밀번호와 Chromosome끼리 값을 비교 후, 일치하는 힝목 당 1점을 부여한 후, 100점 만점으로 환산 후 반환하였다.
+3. 위와 같은 작업을 모든 Chromosome에 적용 후 점수를 기준으로 내림차순으로 정렬 후 반환하였다.
+4. 
+
+
+'''
+
+        
+
+
+
+
+
+    
 
 
 
