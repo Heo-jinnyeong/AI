@@ -128,7 +128,7 @@
 
 &nbsp;
 
-# 4. 돌연변이(Mutatio) 
+# 4. 돌연변이(Mutation) 
 
 '''
 
